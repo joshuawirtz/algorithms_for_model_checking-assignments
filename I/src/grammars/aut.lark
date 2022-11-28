@@ -1,0 +1,22 @@
+// Aldebaran file syntax according to https://www.mcrl2.org/web/user_manual/language_reference/lts.html#aldebaran-format
+//
+start: aut_header aut_edge*
+
+aut_header: "des (" FIRST_STATE "," NR_OF_TRANSITIONS "," NR_OF_STATES ")"
+
+FIRST_STATE: NUMBER
+NR_OF_TRANSITIONS: NUMBER
+NR_OF_STATES: NUMBER
+
+aut_edge: "(" START_STATE "," LABEL "," END_STATE ")"
+
+START_STATE: NUMBER
+LABEL: ESCAPED_STRING
+END_STATE: NUMBER
+
+NUMBER: INT
+
+%import common.ESCAPED_STRING
+%import common.INT
+%import common.WS
+%ignore WS
