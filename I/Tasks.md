@@ -1,0 +1,5 @@
+- Parsing tree to LabelTransitionSystem
+- Methods for box
+- CLI
+- Naive and Emerson-Lei Algorithm
+- Reduction in mu calculus
