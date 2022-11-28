@@ -3,8 +3,8 @@ start: formula
 formula: TRUE
        | FALSE
        | VAR
-       | and
-       | or
+       | land
+       | lor
        | diamond
        | box
        | mu
@@ -15,12 +15,12 @@ AL: (LCASE_LETTER) (LCASE_LETTER|DIGIT|"_")*
 
 TRUE: "true"
 FALSE: "false"
-and: "(" formula "&&" formula ")"
-or: "(" formula "||" formula ")"
+land: "(" formula "&&" formula ")"
+lor: "(" formula "||" formula ")"
 diamond: "<" AL ">" formula
 box: "[" AL "]" formula
-mu: "mu" VAR "." formula
-nu: "nu" VAR "." formula
+mu: "mu " VAR "." formula
+nu: "nu " VAR "." formula
 
 %import common.UCASE_LETTER
 %import common.LCASE_LETTER

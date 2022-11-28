@@ -1,1 +1,1 @@
-(<a>true||[b](false&&X))
+mu X.(<a>true||[b](false&&X))
