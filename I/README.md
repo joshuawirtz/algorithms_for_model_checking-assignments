@@ -4,6 +4,7 @@
     ```
     python -m venv .venv
     ```
+   <mark>For the virtual environment to be detected correctly by VSCode/VSCodium make sure to open folder "I" instead of the top-level directory of the repository.</mark>
 3. Activate virtual environment.
     - Linux:
         ```
@@ -26,9 +27,11 @@
 # Lark
 ## Documentation
 Visit [Lark’s documentation](https://lark-parser.readthedocs.io/en/latest/visitors.html)
+
 ## Parser IDE
 For testing new grammars use
 [Lark IDE](https://www.lark-parser.org/ide/).
+
 ## Syntax highlighting
 for VSCode/VSCodium:
 ```
