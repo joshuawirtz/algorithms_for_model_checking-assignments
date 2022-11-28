@@ -3,7 +3,6 @@ lark
 
 # BDDs
 pyeda
-gvmagic
 
 # Jupyter Notebooks
 ipykernel
