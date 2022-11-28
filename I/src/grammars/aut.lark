@@ -11,12 +11,10 @@ NR_OF_STATES: NUMBER
 aut_edge: "(" START_STATE "," LABEL "," END_STATE ")"
 
 START_STATE: NUMBER
-LABEL: ESCAPED_STRING
+LABEL: STRING
 END_STATE: NUMBER
 
-NUMBER: INT
-
-%import common.ESCAPED_STRING
-%import common.INT
+%import common.ESCAPED_STRING -> STRING
+%import common.INT -> NUMBER
 %import common.WS
 %ignore WS
