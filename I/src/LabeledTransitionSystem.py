@@ -7,7 +7,7 @@ class LabeledTransitionSystem:
 
     def box(s,al):
         [te for (ts,tal,te) in self.transitions
-            if ts == s and tal == al]
+            if ts in s and tal == al]
 
     def __repr__(self):
         return {"states": self.states,
