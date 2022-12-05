@@ -1,7 +1,7 @@
 class LabeledTransitionSystem:
-    def __init__(self, states, action_labels, init_states, transitions):
+    def __init__(self, states, init_states, *transitions):
         self.states = states
-        self.action_labels = action_labels
+        self.action_labels = {al for (_, al, _) in transitions}
         self.init_states = init_states
         self.transitions = transitions # \in S^3
 
