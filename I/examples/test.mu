@@ -1,1 +1,1 @@
-[lock]<lock><eat>true
+nu X. mu Y. ( <plato>Y || <others>X)
