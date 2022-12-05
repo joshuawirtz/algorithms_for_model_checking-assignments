@@ -19,8 +19,13 @@ land: "(" formula "&&" formula ")"
 lor: "(" formula "||" formula ")"
 diamond: "<" AL ">" formula
 box: "[" AL "]" formula
-mu: "mu " VAR "." formula
-nu: "nu " VAR "." formula
+mu: "mu" VAR "." formula
+nu: "nu" VAR "." formula
+
+%ignore " "
+%ignore "\n"
+COMMENT: "%" /[^\n]/*
+%ignore COMMENT
 
 %import common.UCASE_LETTER
 %import common.LCASE_LETTER
