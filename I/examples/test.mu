@@ -1,1 +1,1 @@
-[a]true
+[lock]<lock><eat>true

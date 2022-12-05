@@ -5,9 +5,10 @@ class LabeledTransitionSystem:
         self.init_states = init_states
         self.transitions = transitions # \in S^3
 
-    def box(s,al):
-        [te for (ts,tal,te) in self.transitions
-            if ts in s and tal == al]
+    def box(self, s,al):
+
+        return {te for (ts,tal,te) in self.transitions
+            if ts in s and tal == al}
 
     def __repr__(self):
         return {"states": self.states,
