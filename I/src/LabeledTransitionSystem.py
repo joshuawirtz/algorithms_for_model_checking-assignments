@@ -3,7 +3,7 @@ class LabeledTransitionSystem:
         self.states = states
         self.action_labels = {al for (_, al, _) in transitions}
         self.init_states = init_states
-        self.transitions = transitions # \in S^3
+        self.transitions = set(transitions) # \in S^3
 
     def box(self, s, al):
         al_not_predecessors = {ts for (ts, tal, te) in self.transitions if tal == al and te not in s}
