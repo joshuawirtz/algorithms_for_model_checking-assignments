@@ -1,24 +1,22 @@
 from lark import Lark
 from LabeledTransitionSystem import LabeledTransitionSystem
 from parsing.LabelledTransitionSystemTransformer import LabelledTransitionSystemTransformer
+from parsing.FormulaTransformer import FormulaTransformer
 
-class Parser():
-    def __init__(self, system_path, formula_path):
-        self.system_path = system_path
-        self.formula_path = formula_path
-
-    def parse_system(self):
-        aut_parser = Lark.open("grammars/aut.lark", parser="lalr")
+def parse_system(path):
+    aut_parser = Lark.open("src/grammars/aut.lark", parser="lalr")
         
-        system = aut_parser.parse(open(self.system_path).read())
+    system = aut_parser.parse(open(path).read())
         
-        lts = LabelledTransitionSystemTransformer().transform(system)
+    lts = LabelledTransitionSystemTransformer().transform(system)
 
-        return lts
+    return lts
 
-    def parse_formula(self):
-        mcf_parser = Lark.open("grammars/mcf.lark", parser="lalr")
+def parse_formula(path):
+    mcf_parser = Lark.open("src/grammars/mcf.lark", parser="lalr")
 
-        formula = mcf_parser.parse(open(self.formula_path).read())
+    formula = mcf_parser.parse(open(path).read())
 
-        pass
+    mu = FormulaTransformer().transform(formula)
+    
+    return mu
