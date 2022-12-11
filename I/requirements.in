@@ -1,5 +1,8 @@
 # Parsing
 lark
 
+# Profiling
+yappi
+
 # Jupyter Notebooks
 ipykernel
