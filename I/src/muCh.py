@@ -6,7 +6,7 @@ from os import path
 import parsing.Parser as Parser
 import checking.Checker as Checker
 
-class MuCh():
+class muCh():
     def __init__(self, algorithm, system_path, formula_path):
         self.algorithm = algorithm
         self.system_path = system_path
@@ -56,7 +56,7 @@ def main():
 
     logging.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s', level=logging.INFO)
 
-    much = MuCh(algorithm, system_path, formula_path)
+    much = muCh(algorithm, system_path, formula_path)
     much.parse()
     much.check()
 
