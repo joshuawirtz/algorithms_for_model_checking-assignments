@@ -3,8 +3,8 @@ import logging
 from logging import info
 from os import path
 
-import parsing.Parser as Parser
-import checking.Checker as Checker
+from  parsing import Parser
+from checking import Checker
 
 class muCh():
     def __init__(self, algorithm, system_path, formula_path):
@@ -22,7 +22,7 @@ class muCh():
         info("Finished parsing of formula.")
 
     def check(self):
-        Checker.solver(self.system, self.formula, self.algorithm)
+        return Checker.solver(self.system, self.formula, self.algorithm)
 
 
 def main():
@@ -54,11 +54,17 @@ def main():
     except KeyError:
         raise ValueError("No such algorithm: %s. Choose one of %s." % (args.algorithm, [a.name for a in Checker.Algorithm]))
 
-    logging.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s', level=logging.INFO)
-
+    logging.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s',
+                        datefmt='%H:%M:%S',
+                        level=logging.INFO)
+    
     much = muCh(algorithm, system_path, formula_path)
     much.parse()
-    much.check()
+    (satisfied, states, _) = much.check()
+
+    print("Formula is %s by labelled transition system." % ("SATISFIED" if satisfied else "UNSATISFIED"))
+    print("Satisfying states: %s." % states)
+
 
 if __name__ == "__main__":
     main()

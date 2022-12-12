@@ -71,10 +71,7 @@ def solver(lts, formula, algorithm):
         states = emmerson_lei(lts,reduceFormula(formula,False))
     else:
         raise ValueError("Algorithm %s is unsupported." % algorithm.name)
-    print(0 in states)
-    print(counter)
-    #temp
-    print(states)
+    return (0 in states, states, counter)
     
 
 def naive(lts, formula):
