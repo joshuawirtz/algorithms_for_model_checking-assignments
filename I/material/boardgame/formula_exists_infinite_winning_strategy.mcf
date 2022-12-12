@@ -1,0 +1,1 @@
+nu X. mu Y. ((<choose1><choose2>true && [choose1]<choose2>Y) || ((<won>true && <choose1><choose2>true) && [choose1]<choose2>X))
