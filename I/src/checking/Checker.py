@@ -97,14 +97,13 @@ def simple(lts, formula):
     elif operand == "nu":
         variable = arguments[0]["var"]
         #we start with all the states
-        if (type != "nu" or (not variable in variables)):
-            variables[variable] = states
-        counter = counter +1
-        newSol = emmerson_lei(lts,arguments[1],"nu")
+        variables[variable] = states
+        counter += 1
+        newSol = simple(lts,arguments[1])
         while newSol != variables[variable]:
             counter += 1
-            variables[variable] = newSol 
-            newSol = emmerson_lei(lts,arguments[1],"nu")
+            newSol = simple(lts,arguments[1])
+            variables[variable] = newSol
         return newSol
     else:
         return states
