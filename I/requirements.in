@@ -4,5 +4,8 @@ lark
 # Profiling
 yappi
 
+# Plotting
+seaborn
+
 # Jupyter Notebooks
 ipykernel
