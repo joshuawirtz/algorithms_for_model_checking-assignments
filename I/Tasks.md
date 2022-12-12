@@ -1,5 +1,3 @@
-- Parsing tree to LabelTransitionSystem
-- Methods for box
-- CLI
-- Naive and Emerson-Lei Algorithm
-- Reduction in mu calculus
+- Visualsation for profiling, different sizes one bar for naive one for emmerson (Joshua)
+    + graph for fixed point computations
+    + graph for cpu runtime
