@@ -66,7 +66,7 @@ def solver(lts, formula, algorithm):
     global counter
     counter = 0
     if algorithm == Algorithm.NAIVE:
-        states = simple(lts,reduceFormula(formula))
+        states = naive(lts,reduceFormula(formula))
     elif algorithm == Algorithm.EMERSON_LEI:
         states = emmerson_lei(lts,reduceFormula(formula,False))
     else:
@@ -77,19 +77,19 @@ def solver(lts, formula, algorithm):
     print(states)
     
 
-def simple(lts, formula):
+def naive(lts, formula):
     global counter
     states = lts.states
     operand = list(formula.keys())[0]
     arguments = formula[operand]
     if operand == "neg":
-        return states - (simple(lts,arguments))
+        return states - (naive(lts,arguments))
     elif operand == "or":
-        return simple(lts,arguments[0]) | simple(lts,arguments[1])
+        return naive(lts,arguments[0]) | naive(lts,arguments[1])
     elif operand == "and":
-        return simple(lts,arguments[0]) & simple(lts,arguments[1])
+        return naive(lts,arguments[0]) & naive(lts,arguments[1])
     elif operand == "box":
-        return lts.box(simple(lts,arguments[1]),arguments[0])
+        return lts.box(naive(lts,arguments[1]),arguments[0])
     elif operand == "val":
         return states
     elif operand == "var":
@@ -99,10 +99,10 @@ def simple(lts, formula):
         #we start with all the states
         variables[variable] = states
         counter += 1
-        newSol = simple(lts,arguments[1])
+        newSol = naive(lts,arguments[1])
         while newSol != variables[variable]:
             counter += 1
-            newSol = simple(lts,arguments[1])
+            newSol = naive(lts,arguments[1])
             variables[variable] = newSol
         return newSol
     else:
