@@ -102,8 +102,8 @@ def naive(lts, formula):
         newSol = naive(lts,arguments[1])
         while newSol != variables[variable]:
             counter += 1
-            newSol = naive(lts,arguments[1])
             variables[variable] = newSol
+            newSol = naive(lts,arguments[1])            
         return newSol
     else:
         return states
