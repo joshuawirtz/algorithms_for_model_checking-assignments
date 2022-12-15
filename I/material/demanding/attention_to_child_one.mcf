@@ -1,0 +1,14 @@
+nu X. (
+    [ask]
+        mu Y.(
+            <i>true && ([i]Y
+            || 
+                (<wisdom>true && [wisdom]
+                    mu Z.(
+                        <i>true && ([i]Z
+                        || <playing>true)
+                    )                
+                )
+            )
+        )
+&& ([i]X && ([ask]X && ([playing]X && [wisdom]X))))
