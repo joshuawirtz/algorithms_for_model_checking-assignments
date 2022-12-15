@@ -1,1 +1,0 @@
-nu X. mu Y. ( <plato>Y || <others>X)
