@@ -1,13 +1,14 @@
 from enum import Enum
+import logging
 
 def reduceFormula(t, reduceFixPoints=True):
     operand = list(t.keys())[0]
     arguments = t[operand]
-
+    
     def negate(t, x):
         o = list(t.keys())[0]
         a = t[o]
-
+        
         if o == "var":
             if a == x["var"]:
                 return {"neg": t}
@@ -20,8 +21,8 @@ def reduceFormula(t, reduceFixPoints=True):
         elif o == "box" or o == "diamond":
             return {o: [a[0], negate(a[1], x)]}
         elif o == "mu" or o == "nu":
-            v = arguments[0]
-            f = arguments[1]
+            v = a[0]
+            f = a[1]
             return {o: [v, negate(f, x)]}
         else:
             return {o: negate(a, x)}
