@@ -134,13 +134,17 @@ def emmerson_lei(lts, formula,type = "null"):
         """
         operand = list(tree.keys())[0]
         arguments = tree[operand]
-        
+        print("Resetting variable:", bound_variable, operand)
         if operand == "var":
             if arguments != bound_variable:
                 if fixpoint_type == "mu":
+                    print("reseting largest fixpoint!")
                     variables[bound_variable] = states
                 else:
+                    print("reseting least fixpoint!")
                     variables[bound_variable] = set()
+        elif operand == "neg":
+            reset_variable(arguments, bound_variable, fixpoint_type)
         elif operand == "and" or operand == "or":
             for arg in arguments:
                 reset_variable(arg, bound_variable, fixpoint_type)
