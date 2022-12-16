@@ -79,12 +79,15 @@ variables = dict()
 def solver(lts, formula, algorithm):
     global counter
     counter = 0
+    global variables
+    variables = dict()
     if algorithm == Algorithm.NAIVE:
         states = naive(lts,reduce_formula(formula))
     elif algorithm == Algorithm.EMERSON_LEI:
         states = emmerson_lei(lts,reduce_formula(formula,False))
     else:
         raise ValueError("Algorithm %s is unsupported." % algorithm.name)
+    logging.info("solver. ifp: %s" % counter)
     return (0 in states, states, counter)
     
 
