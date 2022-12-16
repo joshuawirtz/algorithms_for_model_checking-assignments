@@ -1,3 +1,7 @@
+μCh is a model checker for labelled transition systems. It can read labelled transition systems in the
+Aldebaran file format and μ-calculus formulae as defined in the assignment. Checking a formula on a
+system can be done using either the naive or Emerson Lei algorithm.
+
 # Development Environment
 1. Install python.
 2. Create virtual environment inside of directory "I".
