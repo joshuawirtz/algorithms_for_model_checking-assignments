@@ -87,7 +87,7 @@ def solver(lts, formula, algorithm):
         states = emmerson_lei(lts,reduce_formula(formula,False))
     else:
         raise ValueError("Algorithm %s is unsupported." % algorithm.name)
-    logging.info("solver. ifp: %s" % counter)
+
     return (0 in states, states, counter)
     
 
