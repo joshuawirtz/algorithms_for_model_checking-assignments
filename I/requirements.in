@@ -1,11 +1,14 @@
-# Parsing
+# parsing
 lark
 
-# Profiling
+# profiling
 yappi
 
-# Plotting
+# plotting
 seaborn
 
-# Jupyter Notebooks
+# distribution
+pyinstaller
+
+# jupyter notebooks
 ipykernel
