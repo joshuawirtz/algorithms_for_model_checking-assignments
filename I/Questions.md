@@ -1,2 +1,0 @@
-- Do we need to consider fairness?
-- Use of libraries
