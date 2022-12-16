@@ -180,9 +180,9 @@ def emmerson_lei(lts, formula,type = "null"):
         if operand == "var":
             if arguments["var"] != bound_variable:
                 if fixpoint_type == "mu":
-                    variables[variable] = states
+                    variables[bound_variable] = states
                 else:
-                    variables[variable] = set()
+                    variables[bound_variable] = set()
         elif operand == "and" or operand == "or":
             for arg in arguments:
                 reset_variable(arg, bound_variable, fixpoint_type)
