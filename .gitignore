@@ -1,5 +1,12 @@
+# virtual environment
 .venv/
-requirements.txt
-__pycache__/
 
+# dependencies
+requirements.txt
+
+# distribution
 dist/
+build/
+
+# cache
+__pycache__/
