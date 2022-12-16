@@ -1,58 +1,71 @@
 from enum import Enum
 import logging
 
-def reduceFormula(t, reduceFixPoints=True):
-    operand = list(t.keys())[0]
-    arguments = t[operand]
+def reduce_formula(formula_tree, reduceFixPoints=True):
+    """Reduces the input parsing tree formula_tree by traversing it from top to bottom.
+
+    The following reductions will be applied:
+     - False is replaced with !True
+     - <a>f is replaced with ![a]!f
+    And if input parameter reduceFixPoints == True:
+     - mu X. f is replaced with !nu X. !f[X := !X]
+    """
+
+    operand = list(formula_tree.keys())[0]
+    arguments = formula_tree[operand]
     
-    def negate(t, x):
-        o = list(t.keys())[0]
-        a = t[o]
+    def negate_variable(tree, x):
+        """
+        Traverses tree down to leaves and replaces any occurences of variable x with !x
+        """
+        operand = list(tree.keys())[0]
+        arguments = tree[operand]
         
-        if o == "var":
-            if a == x["var"]:
-                return {"neg": t}
+        if operand == "var":
+            if arguments == x["var"]:
+                return {"neg": tree}
             else:
-                return t
-        elif o == "val":
-            return t
-        elif o == "and" or o == "or":
-            return {o: [negate(arg, x) for arg in a]}
-        elif o == "box" or o == "diamond":
-            return {o: [a[0], negate(a[1], x)]}
-        elif o == "mu" or o == "nu":
-            v = a[0]
-            f = a[1]
-            return {o: [v, negate(f, x)]}
+                return tree
+        elif operand == "val":
+            return tree
+        elif operand == "and" or operand == "or":
+            return {operand: [negate_variable(arg, x) for arg in arguments]}
+        elif operand == "box" or operand == "diamond":
+            return {operand: [arguments[0], negate_variable(arguments[1], x)]}
+        elif operand == "mu" or operand == "nu":
+            var = arguments[0]
+            form = arguments[1]
+            return {operand: [var, negate_variable(form, x)]}
         else:
-            return {o: negate(a, x)}
+            return {operand: negate_variable(arguments, x)}
 
     if operand == "val":
         if arguments == False:
             return {"neg": {"val": True}}
         else:
-            return t
+            return formula_tree
     elif operand == "var":
-        return t
+        return formula_tree
     elif operand == "diamond":
-        return {"neg": {"box": [arguments[0], {"neg": reduceFormula(arguments[1], reduceFixPoints)}]}}
+        return {"neg": {"box": [arguments[0], {"neg": reduce_formula(arguments[1], reduceFixPoints)}]}}
     elif operand == "box":
-        return {"box": [arguments[0], reduceFormula(arguments[1], reduceFixPoints)]}
+        return {"box": [arguments[0], reduce_formula(arguments[1], reduceFixPoints)]}
     elif operand == "and" or operand == "or":
-        return {operand: [reduceFormula(arg, reduceFixPoints) for arg in arguments]}
+        return {operand: [reduce_formula(arg, reduceFixPoints) for arg in arguments]}
     elif operand == "mu":
-        v = arguments[0]
-        f = arguments[1]
+        var = arguments[0]
+        form = arguments[1]
         if reduceFixPoints:
-            return {"neg": {"nu": [v, {"neg": reduceFormula(negate(f, v), reduceFixPoints)}]}}
+            return {"neg": {"nu": [var, {"neg": reduce_formula(negate_variable(form, var), reduceFixPoints)}]}}
         else:
-            return {operand: [v, reduceFormula(f, reduceFixPoints)]}
+            return {operand: [var, reduce_formula(form, reduceFixPoints)]}
     elif operand == "nu":
-        v = arguments[0]
-        f = arguments[1]
-        return {operand: [v, reduceFormula(f, reduceFixPoints)]}
+        var = arguments[0]
+        form = arguments[1]
+        return {operand: [var, reduce_formula(form, reduceFixPoints)]}
     else:
-        return {operand: reduceFormula(arguments, reduceFixPoints)}
+        return {operand: reduce_formula(arguments, reduceFixPoints)}
+
 
 class Algorithm(Enum):
     NAIVE = 1
@@ -67,9 +80,9 @@ def solver(lts, formula, algorithm):
     global counter
     counter = 0
     if algorithm == Algorithm.NAIVE:
-        states = naive(lts,reduceFormula(formula))
+        states = naive(lts,reduce_formula(formula))
     elif algorithm == Algorithm.EMERSON_LEI:
-        states = emmerson_lei(lts,reduceFormula(formula,False))
+        states = emmerson_lei(lts,reduce_formula(formula,False))
     else:
         raise ValueError("Algorithm %s is unsupported." % algorithm.name)
     return (0 in states, states, counter)
