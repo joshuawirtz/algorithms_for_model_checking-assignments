@@ -24,6 +24,12 @@
     pip install -r requirements.txt
     ```
 
+# Distribution
+Distribution images are built using `pyinstaller`:
+```
+pyinstaller --add-data "src/parsing/grammars:parsing/grammars" src/muCh.py 
+```
+
 # Lark
 ## Documentation
 Visit [Lark’s documentation](https://lark-parser.readthedocs.io/en/latest/visitors.html)
