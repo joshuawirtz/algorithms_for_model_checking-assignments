@@ -124,6 +124,7 @@ def emmerson_lei(lts, formula,type = "null"):
     states = lts.states
     operand = list(formula.keys())[0]
     arguments = formula[operand]
+    
     if operand == "neg":
         return states - (emmerson_lei(lts,arguments,type))
     elif operand == "or":
@@ -143,7 +144,7 @@ def emmerson_lei(lts, formula,type = "null"):
             variables[variable] = states
         # check for open subformulas if needed to reset
         if (type == "mu"):
-            resetVariables(variable,arguments[1],"mu")
+            reset_variables(variable,arguments[1],"mu")
         counter += 1
         newSol = emmerson_lei(lts,arguments[1],"nu")
         while newSol != variables[variable]:
@@ -158,7 +159,7 @@ def emmerson_lei(lts, formula,type = "null"):
             variables[variable] = set()
         #check for open subformulas if needed to reset
         if (type == "nu"):
-            resetVariables(variable,arguments[1],"nu")
+            reset_variables(variable,arguments[1],"nu")
         counter += 1
         newSol = emmerson_lei(lts,arguments[1],"mu")
         while newSol != variables[variable]:
@@ -168,3 +169,30 @@ def emmerson_lei(lts, formula,type = "null"):
         return newSol
     else:
         return states
+
+    def reset_variable(tree, bound_variable, fixpoint_type):
+        """
+        Traverses tree down to leaves and resets open subformulae of fixpoint_type
+        """
+        operand = list(tree.keys())[0]
+        arguments = tree[operand]
+        
+        if operand == "var":
+            if arguments["var"] != bound_variable:
+                if fixpoint_type == "mu":
+                    variables[variable] = states
+                else:
+                    variables[variable] = set()
+        elif operand == "and" or operand == "or":
+            for arg in arguments:
+                reset_variable(arg, bound_variable, fixpoint_type)
+        elif operand == "box":
+            reset_variable(arguments[1], bound_variable, fixpoint_type)
+        elif operand == "mu" or operand == "nu":
+            var = arguments[0]
+            form = arguments[1]
+            if operand == fixpoint_type:
+                bound_variable = var
+            reset_variable(form, bound_variable, fixpoint_type)
+        else:
+            reset_variable(arguments, bound_variable, fixpoint_type)
