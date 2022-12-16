@@ -139,8 +139,11 @@ def emmerson_lei(lts, formula,type = "null"):
     elif operand == "nu":
         variable = arguments[0]["var"]
         #we start with all the states
-        if (type != "nu" or (not variable in variables)):
+        if (not variable in variables):
             variables[variable] = states
+        # check for open subformulas if needed to reset
+        if (type == "mu"):
+            resetVariables(variable,arguments[1],"mu")
         counter += 1
         newSol = emmerson_lei(lts,arguments[1],"nu")
         while newSol != variables[variable]:
@@ -151,8 +154,11 @@ def emmerson_lei(lts, formula,type = "null"):
     elif operand == "mu":
         variable = arguments[0]["var"]
         #we start with the empty set of states
-        if (type != "mu" or (not variable in variables)):
+        if (not variable in variables):
             variables[variable] = set()
+        #check for open subformulas if needed to reset
+        if (type == "nu"):
+            resetVariables(variable,arguments[1],"nu")
         counter += 1
         newSol = emmerson_lei(lts,arguments[1],"mu")
         while newSol != variables[variable]:
