@@ -1,4 +1,6 @@
-start: ["parity " IDENTIFIER ";"] node_spec+
+start: [header]  node_spec+
+
+header: "parity " IDENTIFIER ";"
 
 node_spec: IDENTIFIER " " PRIORITY " " OWNER " " successors [" " NAME] ";"
 
