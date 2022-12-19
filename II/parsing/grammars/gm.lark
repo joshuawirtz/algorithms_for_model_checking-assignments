@@ -1,0 +1,16 @@
+start: ["parity " IDENTIFIER ";"] node_spec+
+
+node_spec: IDENTIFIER " " PRIORITY " " OWNER " " successors [" " NAME] ";"
+
+IDENTIFIER: INT
+PRIORITY: INT
+OWNER: "0" | "1"
+
+successors: IDENTIFIER ("," IDENTIFIER)*
+
+NAME: "\"" ASCII_CHAR+ "\""
+ASCII_CHAR: /[ -!#-~]/
+
+%ignore "\n"
+
+%import common.INT
