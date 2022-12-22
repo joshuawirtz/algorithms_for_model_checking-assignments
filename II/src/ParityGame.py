@@ -5,9 +5,6 @@ class ParityGame:
     def __init__(self, vertices):
         self.vertices = vertices
 
-    def lift(self, vertex, order):
-        pass
-
     def __repr__(self):
         return {"vertices": self.vertices}.__repr__()
 
