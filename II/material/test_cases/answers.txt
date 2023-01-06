@@ -1,0 +1,8 @@
+test_case_all_odd
+even = {}, odd = {0,1,2,3}
+test_case_string_parsing
+even = {}, odd = {0,1,2,3}
+test_case_all_flipped
+even = {0,1,2,3}, odd = {}
+test_case_simple_partition
+even = {1,2,3}, odd = {0}
