@@ -8,8 +8,8 @@ def solve_game(game, lifting_order):
     # Find maximal priority of any vertex
     max_priority = max([v.priority for v in game.vertices])
 
-    # T is defined to be larger than all other tuples (since for progress measuremetns the first element is 0)
-    T = [1]*(max_priority + 1)
+    # T is defined to be larger than all other tuples (since for progress measure the value at index 0 is always 0)
+    T = [1]
 
     # Initialize the dictionary mapping vertices to progress measures
     M = {}
@@ -60,8 +60,6 @@ def solve_game(game, lifting_order):
         else:
             lifted_m = max([prog(vertex, w) for w in v.successors])
         if lifted_m != M[v.identifier]:
-            if lifted_m < M[v.identifier]:
-                print(str(lifted_m) + " < " + str(M[v.identifier]))
             M[v.identifier] = lifted_m
             return True
         else:
@@ -74,5 +72,5 @@ def solve_game(game, lifting_order):
         for v in lifting_order:
             did_lift_vertex = did_lift_vertex or lift(v)
 
-    return M
+    return {"even": {v for v in M if M[v] != T}, "odd": {v for v in M if M[v] == T}}
 
