@@ -3,7 +3,15 @@ from enum import Enum
 class ParityGame:
 
     def __init__(self, vertices):
-        self.vertices = vertices
+        # override when double occurance
+        self.vertices = []
+        for vertex in vertices:
+            try:
+                self.vertices.remove(vertex)
+            except:
+                pass
+            finally:
+                self.vertices.append(vertex)
 
     def __repr__(self):
         return {"vertices": self.vertices}.__repr__()
@@ -20,6 +28,9 @@ class Vertex:
         self.owner = owner
         self.successors = successors
         self.name = name
+
+    def __eq__(self, other):
+        return self.identifier == other.identifier
 
     def __repr__(self):
         return {"identifier": self.identifier,
