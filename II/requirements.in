@@ -1,5 +1,10 @@
 # parsing
 lark
 
+# profiling
+yappi
+tqdm
+pandas
+
 # dependency management
 pip-tools

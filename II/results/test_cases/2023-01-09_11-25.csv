@@ -1,0 +1,33 @@
+,Game,Lifting,Result,iterations,ttot
+0,test_case_all_flipped.gm,Input,"{'even': {0, 1, 2, 3}, 'odd': set()}",4,0.00098071
+1,test_case_all_flipped.gm,Random (seed 42),"{'even': {0, 1, 2, 3}, 'odd': set()}",4,0.0022877690000000003
+2,test_case_all_flipped.gm,Successor,"{'even': {0, 1, 2, 3}, 'odd': set()}",4,0.0009239900000000001
+3,test_case_all_flipped.gm,Self loop,"{'even': {0, 1, 2, 3}, 'odd': set()}",4,0.000693397
+4,test_case_all_odd.gm,Input,"{'even': set(), 'odd': {0, 1, 2, 3}}",6,0.0008886310000000001
+5,test_case_all_odd.gm,Random (seed 42),"{'even': set(), 'odd': {0, 1, 2, 3}}",5,0.001439032
+6,test_case_all_odd.gm,Successor,"{'even': set(), 'odd': {0, 1, 2, 3}}",6,0.001586893
+7,test_case_all_odd.gm,Self loop,"{'even': set(), 'odd': {0, 1, 2, 3}}",5,0.0010819010000000001
+8,test_case_different_order.gm,Input,"{'even': {4, 5, 6}, 'odd': {0, 1, 2, 3}}",8,0.002937971
+9,test_case_different_order.gm,Random (seed 42),"{'even': {4, 5, 6}, 'odd': {0, 1, 2, 3}}",6,0.004573373
+10,test_case_different_order.gm,Successor,"{'even': {4, 5, 6}, 'odd': {0, 1, 2, 3}}",8,0.003160506
+11,test_case_different_order.gm,Self loop,"{'even': {4, 5, 6}, 'odd': {0, 1, 2, 3}}",8,0.003227761
+12,test_case_no_self_loop.gm,Input,"{'even': set(), 'odd': {0, 1, 2, 3}}",6,0.001131758
+13,test_case_no_self_loop.gm,Random (seed 42),"{'even': set(), 'odd': {0, 1, 2, 3}}",4,0.0015540010000000002
+14,test_case_no_self_loop.gm,Successor,"{'even': set(), 'odd': {0, 1, 2, 3}}",6,0.003086395
+15,test_case_no_self_loop.gm,Self loop,"{'even': set(), 'odd': {0, 1, 2, 3}}",6,0.001063168
+16,test_case_priorities.gm,Input,"{'even': {2, 3}, 'odd': {0, 1}}",4,0.023292839000000003
+17,test_case_priorities.gm,Random (seed 42),"{'even': {2, 3}, 'odd': {0, 1}}",4,0.017367408
+18,test_case_priorities.gm,Successor,"{'even': {2, 3}, 'odd': {0, 1}}",4,0.018052759
+19,test_case_priorities.gm,Self loop,"{'even': {2, 3}, 'odd': {0, 1}}",4,0.022175521
+20,test_case_simple_partition.gm,Input,"{'even': {1, 2, 3}, 'odd': {0}}",5,0.0009936860000000001
+21,test_case_simple_partition.gm,Random (seed 42),"{'even': {1, 2, 3}, 'odd': {0}}",5,0.002103312
+22,test_case_simple_partition.gm,Successor,"{'even': {1, 2, 3}, 'odd': {0}}",4,0.0010416070000000002
+23,test_case_simple_partition.gm,Self loop,"{'even': {1, 2, 3}, 'odd': {0}}",5,0.000811106
+24,test_case_special_symbol.gm,Input,"{'even': {3, 4, 5, 6}, 'odd': {0, 1, 2}}",7,0.003395887
+25,test_case_special_symbol.gm,Random (seed 42),"{'even': {3, 4, 5, 6}, 'odd': {0, 1, 2}}",6,0.0034803200000000003
+26,test_case_special_symbol.gm,Successor,"{'even': {3, 4, 5, 6}, 'odd': {0, 1, 2}}",8,0.0023720300000000002
+27,test_case_special_symbol.gm,Self loop,"{'even': {3, 4, 5, 6}, 'odd': {0, 1, 2}}",7,0.002567081
+28,test_case_string_parsing.gm,Input,"{'even': set(), 'odd': {0, 1, 2, 3}}",6,0.0008987460000000001
+29,test_case_string_parsing.gm,Random (seed 42),"{'even': set(), 'odd': {0, 1, 2, 3}}",5,0.003320458
+30,test_case_string_parsing.gm,Successor,"{'even': set(), 'odd': {0, 1, 2, 3}}",6,0.001177792
+31,test_case_string_parsing.gm,Self loop,"{'even': set(), 'odd': {0, 1, 2, 3}}",5,0.0013822810000000002

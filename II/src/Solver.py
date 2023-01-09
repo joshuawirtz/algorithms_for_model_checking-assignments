@@ -65,13 +65,17 @@ def solve_game(game, lifting_order):
         else:
             return False
 
+    # profiling
+    iterations = 0
+
     # Keep lifting vertices untill a fixpoint has been reached
     did_lift_vertex = True
     while did_lift_vertex:
+        iterations += 1
         did_lift_vertex = False
         for v in lifting_order:
             lift_vertex = lift(v)
             did_lift_vertex = did_lift_vertex or lift_vertex
 
-    return {"even": {v for v in M if M[v] != T}, "odd": {v for v in M if M[v] == T}}
+    return ({"even": {v for v in M if M[v] != T}, "odd": {v for v in M if M[v] == T}}, iterations)
 
