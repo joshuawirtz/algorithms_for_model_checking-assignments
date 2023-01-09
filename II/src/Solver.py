@@ -70,7 +70,8 @@ def solve_game(game, lifting_order):
     while did_lift_vertex:
         did_lift_vertex = False
         for v in lifting_order:
-            did_lift_vertex = did_lift_vertex or lift(v)
+            lift_vertex = lift(v)
+            did_lift_vertex = did_lift_vertex or lift_vertex
 
     return {"even": {v for v in M if M[v] != T}, "odd": {v for v in M if M[v] == T}}
 
