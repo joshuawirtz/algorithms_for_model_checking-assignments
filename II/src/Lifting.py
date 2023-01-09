@@ -36,4 +36,12 @@ class SuccessorLifting(Lifting):
     def __iter__(self):
         return iter(sorted(self.game.vertices, key=lambda v: self.succesors[v.identifier]))
 
-# First lift the vertices with selfloops
+class SelfLoopLifting(self):
+
+    def __init__(self, game):
+        super().__init__(game)
+        self.self_loops = [v for v in game.vertices if v.identifier in v.succesors]
+        self.no_self_loops = [v for v in game.vertices if v.identifier not in v.succesors]
+
+    def __iter__(self):
+        return iter(self_loops + no_self_loops)
