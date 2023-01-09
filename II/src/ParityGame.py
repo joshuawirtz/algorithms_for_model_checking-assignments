@@ -15,10 +15,6 @@ class ParityGame:
 
     def __repr__(self):
         return {"vertices": self.vertices}.__repr__()
-
-class Order(Enum):
-    INPUT = 1
-    RANDOM = 2
         
 class Vertex:
 
