@@ -4,14 +4,7 @@ class ParityGame:
 
     def __init__(self, vertices):
         # override when double occurance
-        self.vertices = []
-        for vertex in vertices:
-            try:
-                self.vertices.remove(vertex)
-            except:
-                pass
-            finally:
-                self.vertices.append(vertex)
+        self.vertices = {vertex.identifier: vertex for vertex in vertices}.values()
 
     def __repr__(self):
         return {"vertices": self.vertices}.__repr__()
