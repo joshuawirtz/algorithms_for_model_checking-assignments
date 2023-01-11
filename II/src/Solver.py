@@ -77,5 +77,5 @@ def solve_game(game, lifting_order):
             lift_vertex = lift(v)
             did_lift_vertex = did_lift_vertex or lift_vertex
 
-    return ({"even": {v for v in M if M[v] != T}, "odd": {v for v in M if M[v] == T}}, iterations)
+    return ({"0 won by": "even" if M[0] != T else "odd", "even": len({v for v in M if M[v] != T}), "odd": len({v for v in M if M[v] == T})}, iterations)
 
